@@ -8,7 +8,15 @@ docker run -it --rm \
   --net=host \
   --volume $PWD/config:/config/ \
   --name strongswan \
-  wanderadock/strongswan:0.1.4
+  wanderadock/strongswan:${TAG}
+```
+
+## Build and push
+
+```bash
+export TAG=0.1.X
+docker build -t wanderadock/strongswan:${TAG} .
+docker push wanderadock/strongswan:${TAG}
 ```
 
 ## Docker repository
