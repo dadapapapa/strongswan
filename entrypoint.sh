@@ -9,4 +9,5 @@ sed -i 's/${POD_IP}/'"$POD_IP"'/g' /etc/ipsec.conf
 [ -f "/config/local-public.pem" ] && cp -f /config/local-public.pem /etc/ipsec.d/certs/local-public.pem
 [ -f "/config/remote-public.pem" ] && cp -f /config/remote-public.pem /etc/ipsec.d/certs/remote-public.pem
 
+/ipsec_exporter & 
 /usr/sbin/ipsec start --nofork
