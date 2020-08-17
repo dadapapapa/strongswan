@@ -21,7 +21,7 @@ FROM alpine:3.11
 
 LABEL maintainer="Jiri Frantisek <jiri.frantisek@wandera.com>"
 
-RUN apk --no-cache add strongswan \
+RUN apk --no-cache add strongswan tcpdump iputils \
     && sed -i 's/# install_routes = yes/install_routes = no/g' /etc/strongswan.d/charon.conf 
 
 COPY --from=builder /go/src/github.com/dennisstritzke/ipsec_exporter/build/ipsec_exporter /ipsec_exporter
