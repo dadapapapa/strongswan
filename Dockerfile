@@ -1,7 +1,7 @@
 FROM golang:1.13.8-alpine3.11 AS builder
 
 RUN apk --no-cache add git
-RUN git clone https://github.com/dennisstritzke/ipsec_exporter.git \
+RUN git clone --depth 1 --branch v0.3.1 https://github.com/dennisstritzke/ipsec_exporter.git \
     /go/src/github.com/dennisstritzke/ipsec_exporter
 RUN go get github.com/Masterminds/glide
 
