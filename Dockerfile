@@ -26,7 +26,7 @@ RUN apk --no-cache add strongswan tcpdump iputils \
 
 COPY --from=builder /go/src/github.com/dennisstritzke/ipsec_exporter/build/ipsec_exporter /ipsec_exporter
 
-COPY config/logger.conf /etc/strongswan.d/charon-logging.conf
+COPY config/strongswan-override.conf /etc/strongswan.d/
 
 EXPOSE 500/udp 4500/udp
 
