@@ -1,15 +1,12 @@
-FROM golang:1.13.8-alpine3.11 AS builder
+FROM golang:1.17.8-alpine3.15 AS builder
 
 RUN apk --no-cache add git
-RUN git clone --depth 1 --branch v0.3.1 https://github.com/dennisstritzke/ipsec_exporter.git \
+RUN git clone --depth 1 --branch v0.4.0 https://github.com/dennisstritzke/ipsec_exporter.git \
     /go/src/github.com/dennisstritzke/ipsec_exporter
-RUN go get github.com/Masterminds/glide
 
 ENV PKG_NAME=github.com/dennisstritzke/ipsec_exporter
 ENV PKG_PATH=$GOPATH/src/$PKG_NAME
 WORKDIR $PKG_PATH
-
-RUN glide install
 
 ENV CGO_ENABLED=0
 RUN go build \
@@ -17,7 +14,7 @@ RUN go build \
     -o build/ipsec_exporter \
     github.com/dennisstritzke/ipsec_exporter
     
-FROM alpine:3.11
+FROM alpine:3.15.1
 
 LABEL maintainer="Jiri Frantisek <jiri.frantisek@wandera.com>"
 
